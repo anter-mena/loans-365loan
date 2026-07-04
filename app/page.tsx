@@ -1,9 +1,21 @@
-import { Button } from "@/components/ui/button"
+import { HeroSection } from "@/components/landing/hero-section";
+import { BenefitsSection } from "@/components/landing/benefits-section";
+import { HowItWorksSection } from "@/components/landing/how-it-works-section";
+import { ReviewsSection } from "@/components/landing/reviews-section";
+import { BlogSection } from "@/components/landing/blog-section";
+import { FaqSection } from "@/components/landing/faq-section";
+import { CtaSection } from "@/components/landing/cta-section";
 
 export default function Home() {
   return (
-    <div className="flex min-h-svh items-center justify-center">
-      <Button>Click me</Button>
+    <div className="flex flex-col flex-1">
+      <HeroSection />
+      <BenefitsSection />
+      <HowItWorksSection />
+      <ReviewsSection />
+      <BlogSection />
+      <FaqSection />
+      <CtaSection />
     </div>
-  )
-}
+  );
+}
