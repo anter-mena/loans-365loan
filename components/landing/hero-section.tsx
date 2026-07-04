@@ -1,7 +1,7 @@
-import { ArrowUpRight, ShieldCheck, Lock, Award, Users, Zap } from "lucide-react";
+import { ArrowUpRight, ShieldCheck, Lock, Award, Users, Zap, MoveHorizontal } from "lucide-react";
 import { Marquee } from "@/components/ui/marquee";
 
-const APPLY_URL = "https://cmi.rocks/go/6a0768c8e9dee?affiliate_sub1=365loan";
+const APPLY_URL = "/application-form";
 
 const TRUST_BADGES = [
   { label: "Bank-Level Security",       icon: ShieldCheck },
@@ -64,25 +64,25 @@ export function HeroSection() {
 
       {/* Background */}
       <div className="absolute inset-0 bg-background" />
+      <div className="absolute inset-0 bg-dot-grid" />
       <div className="absolute inset-0 pointer-events-none">
-        <div className="absolute top-0 right-0 w-[55vw] h-[55vh] bg-[radial-gradient(ellipse_at_top_right,rgba(245,129,46,0.09),transparent_65%)]" />
-        <div className="absolute bottom-0 left-0 w-[45vw] h-[45vh] bg-[radial-gradient(ellipse_at_bottom_left,rgba(4,23,53,0.04),transparent_65%)] dark:bg-[radial-gradient(ellipse_at_bottom_left,rgba(245,129,46,0.04),transparent_65%)]" />
+        <div className="absolute top-0 right-0 w-[55vw] h-[55vh] bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklch,var(--color-primary)_9%,transparent),transparent_65%)]" />
+        <div className="absolute bottom-0 left-0 w-[45vw] h-[45vh] bg-[radial-gradient(ellipse_at_bottom_left,color-mix(in_oklch,var(--color-navy)_4%,transparent),transparent_65%)] dark:bg-[radial-gradient(ellipse_at_bottom_left,color-mix(in_oklch,var(--color-primary)_4%,transparent),transparent_65%)]" />
       </div>
 
       {/* Main content */}
-      <div className="relative z-10 flex-1 flex flex-col items-center justify-center w-full max-w-[800px] mx-auto px-5 pt-24 pb-16 text-center">
+      <div className="relative z-10 flex-1 flex flex-col items-center justify-center w-full max-w-[800px] mx-auto px-5 pt-24 pb-8 text-center">
 
         {/* Badge */}
-        <div className="inline-flex items-center gap-2 bg-card border border-border rounded-full px-4 py-1.5 text-[13px] font-semibold text-muted-foreground shadow-sm mb-6">
-          <span className="relative flex h-2 w-2 shrink-0">
-            <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75" />
-            <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500" />
+        <div className="inline-flex items-center gap-2 bg-card border border-border rounded-xl pl-1 pr-3 py-1 text-[13px] font-semibold text-muted-foreground shadow-sm mb-6">
+          <span className="bg-ink dark:bg-white text-white dark:text-ink rounded-lg px-2 py-0.5 text-[10px] font-bold uppercase tracking-wide shrink-0">
+            New
           </span>
           No impact on your credit score
         </div>
 
         {/* Headline */}
-        <h1 className="font-heading font-black text-[2.25rem] sm:text-[3rem] lg:text-[4rem] xl:text-[4.5rem] text-foreground leading-[1.05] tracking-[-0.025em] mb-5">
+        <h1 className="font-heading font-black text-[2.5rem] sm:text-[2.875rem] lg:text-[3.875rem] xl:text-[4.375rem] text-foreground leading-[1.05] tracking-[-0.025em] mb-5">
           Canada's <span className="text-primary underline decoration-wavy decoration-primary/50 underline-offset-[6px]">Best</span> Loans,<br />
           Found in Seconds.
         </h1>
@@ -96,13 +96,11 @@ export function HeroSection() {
         <div className="flex items-center gap-5 flex-wrap justify-center mb-14">
           <a
             href={APPLY_URL}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="bg-[#161D35] dark:bg-white hover:opacity-90 text-white dark:text-[#161D35] font-bold text-[13px] h-[32px] lg:h-[36px] pl-5 pr-1.5 rounded-full inline-flex items-center gap-2 transition-all shadow-sm hover:shadow-md"
+            className="bg-ink dark:bg-white hover:opacity-90 text-white dark:text-ink font-bold text-[14px] h-9.5 lg:h-10.5 pl-6 pr-2 rounded-full inline-flex items-center gap-2 transition-all shadow-sm hover:shadow-md"
           >
             Apply Now
-            <div className="bg-white text-[#161D35] dark:bg-neutral-100 dark:text-primary w-6 h-6 lg:w-7 lg:h-7 rounded-full inline-flex items-center justify-center shadow-sm shrink-0">
-              <ArrowUpRight size={15} />
+            <div className="bg-white text-ink dark:bg-neutral-100 dark:text-primary w-7 h-7 lg:w-8 lg:h-8 rounded-full inline-flex items-center justify-center shadow-sm shrink-0">
+              <ArrowUpRight size={16} />
             </div>
           </a>
 
@@ -120,7 +118,7 @@ export function HeroSection() {
             <div className="flex flex-col items-start gap-0.5">
               <StarRating value={4.5} />
               <span className="text-[12px] text-muted-foreground font-medium">
-                Trusted by <span className="text-foreground font-bold">50,000+</span> Canadians
+                Trusted by <span className="text-primary font-bold">50,000+</span> Canadians
               </span>
             </div>
           </div>
@@ -145,13 +143,19 @@ export function HeroSection() {
                   key={p.name}
                   src={p.src}
                   alt={p.name}
-                  className="h-7 lg:h-8 grayscale opacity-40 dark:invert dark:opacity-30 hover:grayscale-0 hover:opacity-100 dark:hover:opacity-80 transition-all duration-300 cursor-default select-none"
+                  className="h-8 lg:h-10 grayscale opacity-40 dark:invert dark:opacity-30 hover:grayscale-0 hover:opacity-100 hover:scale-110 dark:hover:opacity-80 transition-all duration-300 cursor-default select-none"
                 />
               ))}
             </Marquee>
           </div>
         </div>
 
+      </div>
+
+      {/* Swipe hint, mobile only */}
+      <div className="md:hidden relative z-10 flex items-center justify-center gap-1.5 pb-2">
+        <MoveHorizontal size={12} className="text-muted-foreground/50" strokeWidth={2} />
+        <span className="text-[10px] text-muted-foreground/50 font-medium">Swipe to see more</span>
       </div>
 
       {/* Trust badge strip */}
@@ -161,10 +165,10 @@ export function HeroSection() {
             {TRUST_BADGES.map(({ label, icon: Icon }) => (
               <div
                 key={label}
-                className="flex flex-col items-center justify-center gap-2 px-8 md:px-6 py-6 md:flex-1"
+                className="flex flex-col items-center justify-center gap-1 md:gap-1.5 w-32 md:w-auto px-3 py-4 md:py-6 md:flex-1"
               >
-                <Icon size={18} className="text-primary opacity-85" strokeWidth={1.75} />
-                <span className="text-[11px] font-bold tracking-[0.1em] uppercase text-white/65 whitespace-nowrap">
+                <Icon className="w-3 h-3 md:w-[15px] md:h-[15px] text-primary opacity-85" strokeWidth={1.75} />
+                <span className="text-[9px] md:text-[10px] font-bold tracking-[0.1em] uppercase text-white/65 text-center leading-snug">
                   {label}
                 </span>
               </div>

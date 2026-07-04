@@ -6,7 +6,7 @@ import { BlogSection } from "@/components/landing/blog-section";
 import { FaqSection } from "@/components/landing/faq-section";
 import { CtaSection } from "@/components/landing/cta-section";
 
-export default function Home() {
+export default function Landing() {
   return (
     <div className="flex flex-col flex-1">
       <HeroSection />

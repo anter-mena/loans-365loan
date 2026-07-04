@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Script from "next/script";
 import { cn } from "@/lib/utils";
 
 const CATEGORIES = [
@@ -66,6 +67,21 @@ const CATEGORIES = [
   },
 ];
 
+const faqJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "FAQPage",
+  mainEntity: CATEGORIES.flatMap((cat) =>
+    cat.faqs.map((faq) => ({
+      "@type": "Question",
+      name: faq.q,
+      acceptedAnswer: {
+        "@type": "Answer",
+        text: faq.a,
+      },
+    }))
+  ),
+};
+
 function PlusMinusIcon({ isOpen }: { isOpen: boolean }) {
   return (
     <div className="relative w-4 h-4 shrink-0 flex items-center justify-center">
@@ -89,6 +105,10 @@ export function FaqSection() {
 
   return (
     <section id="faq" className="bg-background py-20 lg:py-28">
+      <Script id="faq-jsonld" type="application/ld+json" strategy="afterInteractive">
+        {JSON.stringify(faqJsonLd)}
+      </Script>
+
       <div className="max-w-[760px] mx-auto px-4 lg:px-8">
 
         {/* Header */}
@@ -101,7 +121,7 @@ export function FaqSection() {
           </div>
           <h2 className="font-heading font-black text-[1.9rem] lg:text-[2.6rem] text-foreground leading-[1.1] tracking-tight mb-4">
             Frequently Asked Questions<br />
-            About Personal Loans in Canada
+            About <span className="text-primary">Personal Loans</span> in Canada
           </h2>
           <p className="text-[0.9rem] text-muted-foreground max-w-[480px] leading-relaxed">
             Find answers to common questions about our loan process, rates, and requirements.

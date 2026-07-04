@@ -58,7 +58,7 @@ export function BenefitsSection() {
               </span>
             </div>
             <h2 className="font-heading font-black text-[1.9rem] lg:text-[2.6rem] text-foreground leading-[1.1] tracking-tight max-w-[500px]">
-              Why Choose 365 Loans<br />
+              Why Choose <span className="text-primary">365 Loans</span><br />
               for Personal Loans
             </h2>
             <p className="text-[0.9rem] text-muted-foreground max-w-[420px] leading-relaxed">

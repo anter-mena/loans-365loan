@@ -50,6 +50,22 @@
   /* Marquee animations */
   --animate-marquee: marquee var(--duration) linear infinite;
   --animate-marquee-vertical: marquee-vertical var(--duration) linear infinite;
+  @keyframes marquee {
+  from {
+    transform: translateX(0);
+    }
+  to {
+    transform: translateX(calc(-100% - var(--gap)));
+    }
+  }
+  @keyframes marquee-vertical {
+  from {
+    transform: translateY(0);
+    }
+  to {
+    transform: translateY(calc(-100% - var(--gap)));
+    }
+  }
 }
 
 :root {
@@ -59,7 +75,7 @@
   --card-foreground: oklch(0.145 0 0);
   --popover: oklch(1 0 0);
   --popover-foreground: oklch(0.145 0 0);
-  --primary: oklch(0.683 0.162 46);
+  --primary: #2f8f5f;
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.97 0 0);
   --secondary-foreground: oklch(0.205 0 0);
@@ -79,7 +95,7 @@
   --radius: 0.625rem;
   --sidebar: oklch(0.985 0 0);
   --sidebar-foreground: oklch(0.145 0 0);
-  --sidebar-primary: oklch(0.683 0.162 46);
+  --sidebar-primary: #2f8f5f;
   --sidebar-primary-foreground: oklch(1 0 0);
   --sidebar-accent: oklch(0.97 0 0);
   --sidebar-accent-foreground: oklch(0.205 0 0);
@@ -94,7 +110,7 @@
   --card-foreground: oklch(0.985 0 0);
   --popover: oklch(0.168 0.038 257);
   --popover-foreground: oklch(0.985 0 0);
-  --primary: oklch(0.683 0.162 46);
+  --primary: #2f8f5f;
   --primary-foreground: oklch(1 0 0);
   --secondary: oklch(0.205 0.04 257);
   --secondary-foreground: oklch(0.985 0 0);
@@ -113,7 +129,7 @@
   --chart-5: oklch(0.269 0 0);
   --sidebar: oklch(0.205 0.04 257);
   --sidebar-foreground: oklch(0.985 0 0);
-  --sidebar-primary: oklch(0.683 0.162 46);
+  --sidebar-primary: #2f8f5f;
   --sidebar-primary-foreground: oklch(1 0 0);
   --sidebar-accent: oklch(0.205 0.04 257);
   --sidebar-accent-foreground: oklch(0.985 0 0);
@@ -144,10 +160,11 @@
 }
 
 @theme {
-  --color-primary-light: #f7a05e;
-  --color-primary-dark: #d96818;
+  --color-primary-light: #6bab86;
+  --color-primary-dark: #1f5c3f;
   --color-navy: #041735;
   --color-navy-light: #0a2554;
+  --color-ink: #161d35;
 }
 
 @layer utilities {

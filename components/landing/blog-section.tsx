@@ -27,7 +27,7 @@ const POSTS = [
 export function BlogSection() {
   return (
     <section id="blog" className="bg-muted/50 bg-dot-grid py-20 lg:py-28">
-      <div className="max-w-[1200px] mx-auto px-4 lg:px-8">
+      <div className="max-w-245 mx-auto px-4 lg:px-8">
 
         {/* Header */}
         <div className="flex items-end justify-between mb-10 lg:mb-12">
@@ -39,7 +39,7 @@ export function BlogSection() {
               </span>
             </div>
             <h2 className="font-heading font-black text-[1.9rem] lg:text-[2.6rem] text-foreground leading-[1.1] tracking-tight max-w-[560px]">
-              What you should know before<br className="hidden lg:block" /> getting a loan.
+              What you should know before<br className="hidden lg:block" /> getting a <span className="text-primary">loan</span>.
             </h2>
           </div>
 
@@ -58,7 +58,7 @@ export function BlogSection() {
             <a
               key={post.title}
               href={post.href}
-              className="group relative overflow-hidden rounded-2xl aspect-[4/3] block"
+              className="group relative overflow-hidden rounded-2xl aspect-3/4 block"
             >
               {/* Background image */}
               <img

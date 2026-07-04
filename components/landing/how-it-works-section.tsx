@@ -1,6 +1,6 @@
 import { ArrowUpRight, ClipboardList, SlidersHorizontal, Banknote } from "lucide-react";
 
-const APPLY_URL = "https://cmi.rocks/go/6a0768c8e9dee?affiliate_sub1=365loan";
+const APPLY_URL = "/application-form";
 
 const STEPS = [
   {
@@ -38,7 +38,7 @@ export function HowItWorksSection() {
           </div>
           <h2 className="font-heading font-black text-[1.9rem] lg:text-[2.6rem] text-foreground leading-[1.1] tracking-tight mb-4">
             How to Get a Personal Loan<br />
-            in 3 Easy Steps
+            in <span className="text-primary">3 Easy Steps</span>
           </h2>
           <p className="text-[0.9rem] text-muted-foreground max-w-[460px] leading-relaxed">
             Our streamlined process gets Canadians from application to funding faster than traditional banks.

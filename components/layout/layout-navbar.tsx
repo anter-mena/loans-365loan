@@ -30,30 +30,32 @@ import {
   NavigationMenuTrigger,
 } from "@/components/ui/navigation-menu";
 
-const APPLY_URL = "https://cmi.rocks/go/6a0768c8e9dee?affiliate_sub1=365loan";
+const APPLY_URL = "/application-form";
 
 const navItems = [
   {
     id: "loans",
     label: "Loans",
+    sectionHref: "/loans",
     subItems: [
       { title: "By Amount",       desc: "$300 - $5,000 loans",                    href: "#", icon: Banknote },
       { title: "By Purpose",      desc: "Debt consolidation, emergencies & more",  href: "#", icon: Target },
       { title: "By Credit Score", desc: "Find loans for your credit range",        href: "#", icon: Gauge },
       { title: "By Type",         desc: "Personal, emergency, same-day loans",     href: "#", icon: Layers },
       { title: "By Location",     desc: "Loans in Canada",                         href: "#", icon: MapPin },
-      { title: "All Loan Options",desc: "Browse all available loans",              href: "#", icon: List },
+      { title: "All Loan Options",desc: "Browse all available loans",              href: "/loans", icon: List },
     ],
   },
   {
     id: "resources",
     label: "Resources",
+    sectionHref: "/resources",
     subItems: [
       { title: "Tools",         desc: "Calculators & helpful tools",      href: "#",    icon: Wrench },
       { title: "Comparisons",   desc: "Compare borrowing options",        href: "#",    icon: ArrowRightLeft },
       { title: "Guides",        desc: "Step-by-step loan guides",         href: "#",    icon: BookOpen },
       { title: "FAQ",           desc: "Common questions answered",        href: "#faq", icon: HelpCircle },
-      { title: "All Resources", desc: "Browse all tools & guides",        href: "#",    icon: FolderTree },
+      { title: "All Resources", desc: "Browse all tools & guides",        href: "/resources", icon: FolderTree },
     ],
   },
   { id: "about",   label: "About Us", href: "/aboutus" },
@@ -109,7 +111,14 @@ export function LayoutNavbar() {
                   <NavigationMenuItem key={item.id}>
                     {item.subItems ? (
                       <>
-                        <NavigationMenuTrigger className="bg-transparent hover:bg-neutral-100/80 dark:hover:bg-white/10 rounded-full h-[36px] px-4 text-[13px] font-semibold text-neutral-800 dark:text-white data-[state=open]:bg-neutral-100 dark:data-[state=open]:bg-white/10 transition-colors border-none outline-none focus:bg-neutral-100 dark:focus:bg-white/10 data-[active]:bg-neutral-100 dark:data-[active]:bg-white/10 ring-0">
+                        <NavigationMenuTrigger
+                          className={cn(
+                            "bg-transparent rounded-full h-[36px] px-4 text-[13px] font-semibold transition-colors border-none outline-none ring-0",
+                            isActive(item.sectionHref)
+                              ? "text-primary bg-primary/8 hover:bg-primary/8 data-[state=open]:bg-primary/8 dark:data-[state=open]:bg-primary/15 focus:bg-primary/8"
+                              : "text-neutral-800 dark:text-white hover:bg-neutral-100/80 dark:hover:bg-white/10 data-[state=open]:bg-neutral-100 dark:data-[state=open]:bg-white/10 focus:bg-neutral-100 dark:focus:bg-white/10 data-[active]:bg-neutral-100 dark:data-[active]:bg-white/10"
+                          )}
+                        >
                           {item.label}
                         </NavigationMenuTrigger>
                         <NavigationMenuContent>
@@ -164,12 +173,10 @@ export function LayoutNavbar() {
           <div className="flex items-center justify-end gap-2 lg:gap-3 pointer-events-auto">
             <a
               href={APPLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="bg-[#161D35] dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-[#161D35] text-[13px] font-semibold h-[32px] lg:h-[36px] flex items-center justify-center pl-5 pr-1.5 rounded-full shadow-sm hover:shadow-md transition-all gap-2 duration-300"
+              className="bg-ink dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-ink text-[13px] font-semibold h-[32px] lg:h-[36px] flex items-center justify-center pl-5 pr-1.5 rounded-full shadow-sm hover:shadow-md transition-all gap-2 duration-300"
             >
               Apply Now
-              <div className="bg-white text-[#161D35] dark:bg-neutral-100 dark:text-primary w-6 h-6 lg:w-7 lg:h-7 rounded-full flex items-center justify-center shadow-sm">
+              <div className="bg-white text-ink dark:bg-neutral-100 dark:text-primary w-6 h-6 lg:w-7 lg:h-7 rounded-full flex items-center justify-center shadow-sm">
                 <ArrowUpRight size="1.125rem" />
               </div>
             </a>
@@ -292,8 +299,6 @@ export function LayoutNavbar() {
           >
             <a
               href={APPLY_URL}
-              target="_blank"
-              rel="noopener noreferrer"
               onClick={closeMobile}
               className="bg-foreground text-background font-bold text-[14px] h-12 pl-6 pr-2 rounded-full inline-flex items-center gap-3 transition-all shadow-md hover:-translate-y-[1px]"
             >

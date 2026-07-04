@@ -70,7 +70,7 @@ function Avatar({ name }: { name: string }) {
 export function ReviewsSection() {
   return (
     <section id="reviews" className="bg-muted/50 bg-dot-grid py-20 lg:py-28">
-      <div className="max-w-[1200px] mx-auto px-4 lg:px-8">
+      <div className="max-w-245 mx-auto px-4 lg:px-8">
 
         {/* Header */}
         <div className="flex flex-col items-center text-center mb-12">
@@ -81,7 +81,7 @@ export function ReviewsSection() {
             </span>
           </div>
           <h2 className="font-heading font-black text-[1.9rem] lg:text-[2.6rem] text-foreground leading-[1.1] tracking-tight mb-4">
-            Trusted by 50,000+ Canadians
+            Trusted by <span className="text-primary">50,000+</span> Canadians
           </h2>
           <div className="flex items-center gap-2">
             <div className="flex items-center gap-0.5">
