@@ -58,11 +58,11 @@ export function BenefitsSection() {
               </span>
             </div>
             <h2 className="font-heading font-black text-[1.9rem] lg:text-[2.6rem] text-foreground leading-[1.1] tracking-tight max-w-[500px]">
-              Why Choose <span className="text-primary">365 Loans</span><br />
+              Why Choose <span className="text-primary">365loan</span><br />
               for Personal Loans
             </h2>
             <p className="text-[0.9rem] text-muted-foreground max-w-[420px] leading-relaxed">
-              365 Loans connects you with top lenders, so you can find the best rates without the bank runaround.
+              365loan connects you with top lenders, so you can find the best rates without the bank runaround.
             </p>
           </div>
 
