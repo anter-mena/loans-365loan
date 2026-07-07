@@ -7,7 +7,7 @@ import { CtaSection } from "@/components/landing/cta-section";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Contact Us | 365loan",
+  title: "Contact 365loan | Canadian Personal Loan Support Team",
   description: "Get in touch with the 365loan team — questions about rates, lenders, or your application, we usually respond within one business day.",
   path: "/contact",
   keywords: ["contact 365loan", "365loan customer support", "365loan phone number", "365loan email"],
@@ -17,6 +17,29 @@ const breadcrumb = breadcrumbJsonLd([
   { name: "Home", path: "/" },
   { name: "Contact", path: "/contact" },
 ]);
+
+const contactPointJsonLd = {
+  "@context": "https://schema.org",
+  "@type": "Organization",
+  name: "365loan",
+  url: "https://365loan.ca",
+  contactPoint: {
+    "@type": "ContactPoint",
+    telephone: "+1-800-365-5626",
+    email: "support@365loan.ca",
+    contactType: "customer service",
+    areaServed: "CA",
+    availableLanguage: ["English", "French"],
+  },
+  address: {
+    "@type": "PostalAddress",
+    streetAddress: "20 Bay Street",
+    addressLocality: "Toronto",
+    addressRegion: "ON",
+    postalCode: "M5J 2N8",
+    addressCountry: "CA",
+  },
+};
 
 const CONTACT_INFO = [
   { icon: Mail,  label: "Email",  value: "support@365loan.ca",                href: "mailto:support@365loan.ca" },
@@ -39,6 +62,9 @@ export default function ContactPage() {
     <>
       <Script id="contact-breadcrumb" type="application/ld+json" strategy="afterInteractive">
         {JSON.stringify(breadcrumb)}
+      </Script>
+      <Script id="contact-point" type="application/ld+json" strategy="afterInteractive">
+        {JSON.stringify(contactPointJsonLd)}
       </Script>
 
       {/* Page header */}

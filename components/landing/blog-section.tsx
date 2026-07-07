@@ -6,21 +6,21 @@ const POSTS = [
     title: "How to Get a Personal Loan With Bad Credit in Canada",
     description: "Your options don't end at the bank. Discover how to secure funding even with a low credit score.",
     image: "https://picsum.photos/seed/loan-canada-1/800/600",
-    href: "#",
+    href: "/resources/guides/how-to-get-a-personal-loan-with-bad-credit",
   },
   {
     category: "Rates",
     title: "Personal Loan Rates in Canada: What to Expect",
     description: "From fixed to variable — how lenders price your loan and how to negotiate better terms.",
     image: "https://picsum.photos/seed/loan-canada-2/800/600",
-    href: "#",
+    href: "/resources/guides/average-personal-loan-rates",
   },
   {
     category: "Tips",
     title: "Debt Consolidation Loans: Is It the Right Move for You?",
     description: "Combine multiple debts into one simple payment and potentially lower your interest rate.",
     image: "https://picsum.photos/seed/loan-canada-3/800/600",
-    href: "#",
+    href: "/loans/by-type/debt-consolidation-loans",
   },
 ];
 
@@ -44,7 +44,7 @@ export function BlogSection() {
           </div>
 
           <a
-            href="#"
+            href="/resources/guides"
             className="hidden md:inline-flex items-center gap-1 text-[13.5px] font-semibold text-foreground underline underline-offset-4 decoration-foreground/25 hover:decoration-foreground transition-all mb-1 shrink-0"
           >
             All articles

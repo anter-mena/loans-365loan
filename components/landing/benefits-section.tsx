@@ -67,7 +67,7 @@ export function BenefitsSection() {
           </div>
 
           <a
-            href="#"
+            href="/application-form"
             className="hidden md:inline-flex items-center gap-1 text-[13.5px] font-semibold text-foreground underline underline-offset-4 decoration-foreground/25 hover:decoration-foreground transition-all mb-1 shrink-0"
           >
             Check your rate

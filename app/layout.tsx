@@ -68,7 +68,7 @@ const organizationJsonLd = {
   "@type": "Organization",
   name: "365loan",
   url: "https://365loan.ca",
-  logo: "https://365loan.ca/logoBlack.svg",
+  logo: "https://365loan.ca/logo.svg",
   description: "365loan is a Canadian personal loan comparison platform connecting consumers with vetted third-party lenders.",
 };
 

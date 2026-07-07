@@ -5,9 +5,9 @@ import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Privacy Policy | 365loan",
-  description: "Learn how 365loan collects, uses, and protects your personal information.",
+  description: "Learn how 365loan collects, uses, and protects your personal information in compliance with Canadian privacy law (PIPEDA), and how our lender network handles your data.",
   path: "/privacy-policy",
-  keywords: ["365loan privacy policy", "data protection 365loan"],
+  keywords: ["365loan privacy policy", "data protection 365loan", "PIPEDA compliance canada"],
 });
 
 const breadcrumb = breadcrumbJsonLd([
@@ -17,7 +17,7 @@ const breadcrumb = breadcrumbJsonLd([
 
 const BADGES = [
   { icon: Lock,        label: "256-bit Encryption" },
-  { icon: ShieldCheck,  label: "CCPA Compliant" },
+  { icon: ShieldCheck,  label: "PIPEDA Compliant" },
   { icon: Ban,          label: "No Data Selling" },
 ];
 
@@ -54,7 +54,7 @@ const SECTIONS: { number: string; title: string; body: Block[] }[] = [
     number: "04",
     title: "Multi-Lender Application Network",
     body: [
-      { type: "p", text: "Applications submitted through our partner network are distributed to various lending institutions and brokerage services to maximize your approval probability. Information processed through this network may be stored in jurisdictions outside your state." },
+      { type: "p", text: "Applications submitted through our partner network are distributed to various lending institutions and brokerage services to maximize your approval probability. Information processed through this network may be stored in jurisdictions outside your province." },
       { type: "p", text: "Network participants and their affiliates may contact you via email, phone, or text messaging (carrier rates apply). You retain the right to stop these communications by responding HELP for support or STOP to cease messages." },
     ],
   },

@@ -4,7 +4,7 @@ import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
   title: "Terms of Use | 365loan",
-  description: "The terms and conditions governing your use of 365loan's services.",
+  description: "The terms and conditions governing your use of 365loan's Canadian personal loan comparison platform, including electronic agreements and dispute resolution.",
   path: "/terms-of-use",
   keywords: ["365loan terms of use", "365loan terms and conditions"],
 });
@@ -19,7 +19,7 @@ const SECTIONS: { number: string; title: string; paragraphs: string[] }[] = [
     number: "01",
     title: "Jurisdiction Notice",
     paragraphs: [
-      "All financial transactions conducted through this platform are considered to take place at our principal place of business, regardless of the user's geographic location.",
+      "All financial transactions conducted through this platform are considered to take place at our principal place of business in Toronto, Ontario, and these Terms are governed by the laws of the Province of Ontario and the federal laws of Canada applicable therein, regardless of the user's geographic location.",
     ],
   },
   {
@@ -87,11 +87,7 @@ export default function TermsOfUsePage() {
         <div className="absolute inset-0 pointer-events-none">
           <div className="absolute top-0 right-0 w-[55vw] h-[55vh] bg-[radial-gradient(ellipse_at_top_right,color-mix(in_oklch,var(--color-primary)_9%,transparent),transparent_65%)]" />
         </div>
-        <div className="relative z-10 max-w-180✅ app/favicon.ico — already existed, working
-✅ Added app/icon.svg (reused your existing favicon.svg) — modern browsers will prefer this
-⚠️ public/favicon.png is only 48×48 — too small for real Android/PWA use. You'll want 192×192 and 512×512 PNG exports for a proper manifest icon set (I wired the manifest to the real 48×48 for now rather than lie about the size)
-❌ No apple-icon.png (180×180) for iOS home-screen bookmarks — needs a real export, I can't fabricate the binary
-❌ No Open Graph image (1200×630) — social shares currently have no preview image at all. Also needs real design/export mx-auto px-4 lg:px-8 flex flex-col items-center text-center">
+        <div className="relative z-10 max-w-180 mx-auto px-4 lg:px-8 flex flex-col items-center text-center">
           <div className="flex flex-col items-center gap-1.5 mb-5">
             <div className="w-7 h-px bg-foreground/40" />
             <span className="text-[11px] font-semibold tracking-[0.14em] uppercase text-muted-foreground">

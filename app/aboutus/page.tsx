@@ -7,7 +7,7 @@ import { cn } from "@/lib/utils";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "About Us | 365loan",
+  title: "About 365loan | Canada's Personal Loan Comparison Platform",
   description: "Learn how 365loan connects Canadians with vetted lenders to find better personal loan rates — fast, transparent, and free to use.",
   path: "/aboutus",
   keywords: ["about 365loan", "canadian loan comparison company", "365loan mission", "who is 365loan"],
@@ -184,6 +184,29 @@ export default function AboutUsPage() {
               </div>
             ))}
           </div>
+        </div>
+      </section>
+
+      <section className="bg-background py-16 lg:py-20">
+        <div className="max-w-[720px] mx-auto px-4 lg:px-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-6 text-center">
+          <a
+            href="/loans"
+            className="inline-flex items-center gap-1.5 text-[0.875rem] font-semibold text-foreground underline underline-offset-4 decoration-foreground/25 hover:decoration-foreground transition-all"
+          >
+            Browse loans
+          </a>
+          <a
+            href="/resources"
+            className="inline-flex items-center gap-1.5 text-[0.875rem] font-semibold text-foreground underline underline-offset-4 decoration-foreground/25 hover:decoration-foreground transition-all"
+          >
+            Guides &amp; tools
+          </a>
+          <a
+            href="/contact"
+            className="inline-flex items-center gap-1.5 text-[0.875rem] font-semibold text-foreground underline underline-offset-4 decoration-foreground/25 hover:decoration-foreground transition-all"
+          >
+            Contact us
+          </a>
         </div>
       </section>
 

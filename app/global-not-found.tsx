@@ -24,6 +24,7 @@ const fontMono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: "Page Not Found | 365loan",
   description: "The page you're looking for doesn't exist or may have moved.",
+  robots: { index: false, follow: false },
 };
 
 export default function GlobalNotFound() {
@@ -89,8 +90,8 @@ export default function GlobalNotFound() {
               </a>
             </div>
 
-            <img src="/logoBlack.svg" alt="365loan" className="h-10 w-auto opacity-[0.07] dark:hidden mt-16" />
-            <img src="/logoWhite.svg" alt="365loan" className="h-10 w-auto opacity-[0.12] hidden dark:block mt-16" />
+            <img src="/logo.svg" alt="365loan" className="h-10 w-auto opacity-[0.07] dark:hidden mt-16" />
+            <img src="/logo2.svg" alt="365loan" className="h-10 w-auto opacity-[0.12] hidden dark:block mt-16" />
           </div>
         </section>
       </body>

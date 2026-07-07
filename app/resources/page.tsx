@@ -6,7 +6,7 @@ import { cn } from "@/lib/utils";
 import { buildMetadata, breadcrumbJsonLd } from "@/lib/seo";
 
 export const metadata: Metadata = buildMetadata({
-  title: "Resources | 365loan",
+  title: "Loan Resources: Guides, Tools & Comparisons | 365loan",
   description: "Guides, tools, and comparisons to help you borrow smarter — from calculators to answers on credit scores, rates, and the loan process.",
   path: "/resources",
   keywords: ["loan calculators canada", "personal loan guides", "loan comparison tools", "credit score faq"],
@@ -17,25 +17,36 @@ const breadcrumb = breadcrumbJsonLd([
   { name: "Resources", path: "/resources" },
 ]);
 
+const RESOURCES_ITEMLIST_JSONLD = {
+  "@context": "https://schema.org",
+  "@type": "ItemList",
+  itemListElement: [
+    { "@type": "ListItem", position: 1, name: "Guides", url: "https://365loan.ca/resources/guides" },
+    { "@type": "ListItem", position: 2, name: "Loan Calculator", url: "https://365loan.ca/resources/tools/loan-calculator" },
+    { "@type": "ListItem", position: 3, name: "Comparisons", url: "https://365loan.ca/resources/comparisons" },
+    { "@type": "ListItem", position: 4, name: "FAQ", url: "https://365loan.ca/resources/faq" },
+  ],
+};
+
 const FEATURED = {
   title: "All Resources",
   description: "Every guide, tool, and comparison we publish — in one browsable library.",
-  href: "#",
+  href: "/resources/guides",
   icon: FolderTree,
 };
 
 const CATEGORIES = [
-  { number: "01", title: "Guides",      description: "Step-by-step guides to borrowing in Canada.",             href: "/#blog", icon: BookOpen },
-  { number: "02", title: "Tools",       description: "Calculators and helpful tools to plan your loan.",        href: "#",      icon: Wrench },
-  { number: "03", title: "Comparisons", description: "Compare loans against credit cards and other options.",   href: "#",      icon: ArrowRightLeft },
-  { number: "04", title: "FAQ",         description: "Common questions about rates, credit, and eligibility.",  href: "/#faq",  icon: HelpCircle },
+  { number: "01", title: "Guides",      description: "Step-by-step guides to borrowing in Canada.",             href: "/resources/guides",              icon: BookOpen },
+  { number: "02", title: "Tools",       description: "Calculators and helpful tools to plan your loan.",        href: "/resources/tools/loan-calculator", icon: Wrench },
+  { number: "03", title: "Comparisons", description: "Compare loans against credit cards and other options.",   href: "/resources/comparisons",          icon: ArrowRightLeft },
+  { number: "04", title: "FAQ",         description: "Common questions about rates, credit, and eligibility.",  href: "/resources/faq",                  icon: HelpCircle },
 ];
 
 const STRIP = [
-  { icon: Sparkles,   label: "Written by Loan Specialists" },
+  { icon: Sparkles,   label: "Reviewed by Our Editorial Team" },
   { icon: BookOpen,   label: "Plain-English Guides" },
   { icon: Wrench,     label: "Free Calculators" },
-  { icon: RefreshCw,  label: "Refreshed Every Month" },
+  { icon: RefreshCw,  label: "Cited Sources" },
 ];
 
 function CornerBrackets() {
@@ -55,6 +66,9 @@ export default function ResourcesPage() {
       <Script id="resources-breadcrumb" type="application/ld+json" strategy="afterInteractive">
         {JSON.stringify(breadcrumb)}
       </Script>
+      <Script id="resources-itemlist" type="application/ld+json" strategy="afterInteractive">
+        {JSON.stringify(RESOURCES_ITEMLIST_JSONLD)}
+      </Script>
 
       {/* Page header */}
       <section className="relative pt-36 pb-16 lg:pt-44 lg:pb-20 overflow-hidden">
@@ -72,8 +86,11 @@ export default function ResourcesPage() {
           <h1 className="font-heading font-black text-[2.25rem] lg:text-[3rem] text-foreground leading-[1.1] tracking-tight mb-5">
             Guides & Tools to Borrow Smarter
           </h1>
-          <p className="text-[0.95rem] text-muted-foreground max-w-[520px] leading-relaxed">
+          <p className="text-[0.95rem] text-muted-foreground max-w-[520px] leading-relaxed mb-5">
             Calculators, comparisons, and straight answers to help you understand your options before you apply.
+          </p>
+          <p className="text-[0.75rem] text-muted-foreground/70">
+            Reviewed by the 365loan Editorial Team · Last updated July 7, 2026
           </p>
         </div>
       </section>

@@ -98,8 +98,8 @@ export function LayoutNavbar() {
           {/* Logo */}
           <div className="flex items-center justify-start pointer-events-auto">
             <Link href="/" className="flex items-center outline-none">
-              <img src="/logoBlack.svg" alt="365loan" className="h-6 lg:h-8 w-auto dark:hidden" />
-              <img src="/logoWhite.svg" alt="365loan" className="h-6 lg:h-8 w-auto hidden dark:block" />
+              <img src="/logo.svg" alt="365loan" className="h-6 lg:h-8 w-auto dark:hidden" />
+              <img src="/logo2.svg" alt="365loan" className="h-6 lg:h-8 w-auto hidden dark:block" />
             </Link>
           </div>
 
@@ -173,7 +173,7 @@ export function LayoutNavbar() {
           <div className="flex items-center justify-end gap-2 lg:gap-3 pointer-events-auto">
             <a
               href={APPLY_URL}
-              className="bg-ink dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-ink text-[13px] font-semibold h-[32px] lg:h-[36px] flex items-center justify-center pl-5 pr-1.5 rounded-full shadow-sm hover:shadow-md transition-all gap-2 duration-300"
+              className="hidden md:flex bg-ink dark:bg-white hover:bg-neutral-800 dark:hover:bg-neutral-200 text-white dark:text-ink text-[13px] font-semibold h-[32px] lg:h-[36px] items-center justify-center pl-5 pr-1.5 rounded-full shadow-sm hover:shadow-md transition-all gap-2 duration-300"
             >
               Apply Now
               <div className="bg-white text-ink dark:bg-neutral-100 dark:text-primary w-6 h-6 lg:w-7 lg:h-7 rounded-full flex items-center justify-center shadow-sm">
@@ -224,8 +224,8 @@ export function LayoutNavbar() {
 
           {/* Logo */}
           <Link href="/" onClick={closeMobile} className="mb-8">
-            <img src="/logoBlack.svg" alt="365loan" className="h-10 dark:hidden" />
-            <img src="/logoWhite.svg" alt="365loan" className="h-10 hidden dark:block" />
+            <img src="/logo.svg" alt="365loan" className="h-10 dark:hidden" />
+            <img src="/logo2.svg" alt="365loan" className="h-10 hidden dark:block" />
           </Link>
 
           {/* Nav items */}

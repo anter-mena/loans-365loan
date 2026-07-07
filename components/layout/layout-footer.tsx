@@ -5,18 +5,18 @@ const APPLY_URL = "/application-form";
 
 const LINKS = {
   loans: [
-    { label: "By Amount",       href: "#" },
-    { label: "By Purpose",      href: "#" },
-    { label: "By Credit Score", href: "#" },
-    { label: "By Type",         href: "#" },
-    { label: "By Location",     href: "#" },
+    { label: "By Amount",       href: "/loans/by-amount" },
+    { label: "By Purpose",      href: "/loans/by-purpose" },
+    { label: "By Credit Score", href: "/loans/by-credit-score" },
+    { label: "By Type",         href: "/loans/by-type" },
+    { label: "By Location",     href: "/loans/by-location" },
+    { label: "By Repayment Term", href: "/loans/by-term" },
   ],
   resources: [
-    { label: "Guides",      href: "#" },
-    { label: "Comparisons", href: "#" },
-    { label: "Tools",       href: "#" },
-    { label: "FAQ",         href: "#faq" },
-    { label: "Blog",        href: "#blog" },
+    { label: "Guides",      href: "/resources/guides" },
+    { label: "Comparisons", href: "/resources/comparisons" },
+    { label: "Loan Calculator", href: "/resources/tools/loan-calculator" },
+    { label: "FAQ",         href: "/resources/faq" },
   ],
   company: [
     { label: "About Us", href: "/aboutus" },
@@ -44,7 +44,7 @@ export function LayoutFooter() {
           {/* Brand */}
           <div className="flex flex-col items-center text-center md:items-start md:text-left gap-4 max-w-65">
             <Link href="/" className="inline-flex">
-              <img src="/logoWhite.svg" alt="365loan" className="h-8 w-auto" />
+              <img src="/logo2.svg" alt="365loan" className="h-8 w-auto" />
             </Link>
             <p className="text-[0.825rem] text-white/45 leading-relaxed max-w-[220px]">
               Canada's personal loan comparison platform. Find your best rate in minutes.
@@ -120,7 +120,7 @@ export function LayoutFooter() {
       <div className="relative z-10 border-t border-white/5">
         <div className="max-w-[1200px] mx-auto px-4 lg:px-8 py-5 flex justify-center">
           <p className="text-[0.72rem] text-white/25 leading-relaxed max-w-[820px] text-center">
-            365loan is a loan comparison platform, not a lender. We connect Canadian consumers with third-party lenders. Loan approval, rates, and terms are determined solely by the lender and depend on individual creditworthiness. APR ranges from 5.99% to 46.96%. Representative example: $1,500 loan over 12 months at 29.9% APR — total repayable $1,786.
+            365loan is a loan comparison platform, not a lender. We connect Canadian consumers with third-party lenders. Loan approval, rates, and terms are determined solely by the lender and depend on individual creditworthiness. APR ranges from 5.99% to 34.99%, in compliance with the federal criminal rate of interest. Representative example: $1,500 loan over 12 months at 29.9% APR — total repayable $1,786.
           </p>
         </div>
       </div>
