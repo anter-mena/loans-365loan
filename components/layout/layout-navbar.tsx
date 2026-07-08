@@ -18,6 +18,8 @@ import {
   Wrench,
   ArrowRightLeft,
   BookOpen,
+  Newspaper,
+  Radio,
   HelpCircle,
   FolderTree,
 } from "lucide-react";
@@ -56,6 +58,8 @@ const navItems = [
       { title: "Tools",         desc: "Calculators & helpful tools",      href: "/resources/tools/loan-calculator", icon: Wrench },
       { title: "Comparisons",   desc: "Compare borrowing options",        href: "/resources/comparisons",           icon: ArrowRightLeft },
       { title: "Guides",        desc: "Step-by-step loan guides",         href: "/resources/guides",                icon: BookOpen },
+      { title: "Blog",          desc: "Rate news & borrowing tips",       href: "/blog",                            icon: Newspaper },
+      { title: "News",          desc: "Loan & interest-rate updates",     href: "/news",                            icon: Radio },
       { title: "FAQ",           desc: "Common questions answered",        href: "/resources/faq",                   icon: HelpCircle },
       { title: "All Resources", desc: "Browse all tools & guides",        href: "/resources", icon: FolderTree },
     ],

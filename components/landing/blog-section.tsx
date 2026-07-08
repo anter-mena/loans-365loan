@@ -1,30 +1,12 @@
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
-
-const POSTS = [
-  {
-    category: "Guides",
-    title: "How to Get a Personal Loan With Bad Credit in Canada",
-    description: "Your options don't end at the bank. Discover how to secure funding even with a low credit score.",
-    image: "https://picsum.photos/seed/loan-canada-1/800/600",
-    href: "/resources/guides/how-to-get-a-personal-loan-with-bad-credit",
-  },
-  {
-    category: "Rates",
-    title: "Personal Loan Rates in Canada: What to Expect",
-    description: "From fixed to variable — how lenders price your loan and how to negotiate better terms.",
-    image: "https://picsum.photos/seed/loan-canada-2/800/600",
-    href: "/resources/guides/average-personal-loan-rates",
-  },
-  {
-    category: "Tips",
-    title: "Debt Consolidation Loans: Is It the Right Move for You?",
-    description: "Combine multiple debts into one simple payment and potentially lower your interest rate.",
-    image: "https://picsum.photos/seed/loan-canada-3/800/600",
-    href: "/loans/by-type/debt-consolidation-loans",
-  },
-];
+import { getAllPosts } from "@/lib/blog";
 
 export function BlogSection() {
+  const posts = getAllPosts().slice(0, 3);
+
+  if (posts.length === 0) return null;
+
   return (
     <section id="blog" className="bg-muted/50 bg-dot-grid py-20 lg:py-28">
       <div className="max-w-245 mx-auto px-4 lg:px-8">
@@ -43,29 +25,34 @@ export function BlogSection() {
             </h2>
           </div>
 
-          <a
-            href="/resources/guides"
+          <Link
+            href="/blog"
             className="hidden md:inline-flex items-center gap-1 text-[13.5px] font-semibold text-foreground underline underline-offset-4 decoration-foreground/25 hover:decoration-foreground transition-all mb-1 shrink-0"
           >
             All articles
             <ArrowUpRight size={14} />
-          </a>
+          </Link>
         </div>
 
         {/* Cards grid */}
         <div className="grid grid-cols-1 md:grid-cols-3 gap-5">
-          {POSTS.map((post) => (
-            <a
-              key={post.title}
-              href={post.href}
+          {posts.map((post) => (
+            <Link
+              key={post.slug}
+              href={`/blog/${post.slug}`}
               className="group relative overflow-hidden rounded-2xl aspect-3/4 block"
             >
-              {/* Background image */}
-              <img
-                src={post.image}
-                alt={post.title}
-                className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
-              />
+              {/* Background image (or themed fallback) */}
+              {post.image ? (
+                // eslint-disable-next-line @next/next/no-img-element
+                <img
+                  src={post.image}
+                  alt={post.title}
+                  className="absolute inset-0 w-full h-full object-cover transition-transform duration-500 ease-out group-hover:scale-105"
+                />
+              ) : (
+                <div className="absolute inset-0 bg-navy" />
+              )}
 
               {/* Gradient overlay */}
               <div className="absolute inset-0 bg-gradient-to-t from-black/85 via-black/35 to-black/5" />
@@ -78,11 +65,11 @@ export function BlogSection() {
                 <h3 className="font-heading font-black text-white text-[1.1rem] leading-[1.25] mb-2">
                   {post.title}
                 </h3>
-                <p className="text-white/65 text-[0.825rem] leading-relaxed">
+                <p className="text-white/65 text-[0.825rem] leading-relaxed line-clamp-3">
                   {post.description}
                 </p>
               </div>
-            </a>
+            </Link>
           ))}
         </div>
 

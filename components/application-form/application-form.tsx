@@ -42,7 +42,7 @@ export function ApplyForm() {
         },
       },
       defaultValues: {
-        requestedAmount: Number(amount) || 750,
+        requestedAmount: Number(amount) || 700,
         firstName: firstname || "",
         email: email || "",
       },

@@ -14,6 +14,8 @@ const LINKS = {
   ],
   resources: [
     { label: "Guides",      href: "/resources/guides" },
+    { label: "Blog",        href: "/blog" },
+    { label: "News",        href: "/news" },
     { label: "Comparisons", href: "/resources/comparisons" },
     { label: "Loan Calculator", href: "/resources/tools/loan-calculator" },
     { label: "FAQ",         href: "/resources/faq" },

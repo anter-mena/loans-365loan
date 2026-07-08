@@ -8,6 +8,8 @@ import { PROVINCES } from "@/lib/loans/locations";
 import { REPAYMENT_TERMS } from "@/lib/loans/terms";
 import { COMPARISONS } from "@/lib/loans/comparisons";
 import { GUIDES } from "@/lib/guides";
+import { getAllPosts } from "@/lib/blog";
+import { getAllNews } from "@/lib/news";
 
 type ChangeFreq = MetadataRoute.Sitemap[number]["changeFrequency"];
 
@@ -28,6 +30,8 @@ export default function sitemap(): MetadataRoute.Sitemap {
     { path: "/application-form",  priority: 0.9, changeFrequency: "monthly" },
     { path: "/loans",             priority: 0.9, changeFrequency: "weekly" },
     { path: "/resources",         priority: 0.8, changeFrequency: "weekly" },
+    { path: "/blog",              priority: 0.8, changeFrequency: "weekly" },
+    { path: "/news",              priority: 0.8, changeFrequency: "daily" },
     { path: "/loans/by-amount",         priority: 0.8, changeFrequency: "monthly" },
     { path: "/loans/by-purpose",        priority: 0.8, changeFrequency: "monthly" },
     { path: "/loans/by-credit-score",   priority: 0.8, changeFrequency: "monthly" },
@@ -59,5 +63,17 @@ export default function sitemap(): MetadataRoute.Sitemap {
     ...entries(REPAYMENT_TERMS.map((t) => `/loans/by-term/${t.slug}`), 0.7, "monthly", lastModified),
     ...entries(COMPARISONS.map((c) => `/resources/comparisons/${c.slug}`), 0.6, "monthly", lastModified),
     ...entries(GUIDES.map((g) => `/resources/guides/${g.slug}`), 0.6, "monthly", lastModified),
+    ...getAllPosts().map((post) => ({
+      url: `${BASE_URL}/blog/${post.slug}`,
+      lastModified: new Date(`${post.updated}T00:00:00Z`),
+      changeFrequency: "weekly" as ChangeFreq,
+      priority: 0.7,
+    })),
+    ...getAllNews().map((item) => ({
+      url: `${BASE_URL}/news/${item.slug}`,
+      lastModified: new Date(`${item.updated}T00:00:00Z`),
+      changeFrequency: "weekly" as ChangeFreq,
+      priority: 0.7,
+    })),
   ];
 }
