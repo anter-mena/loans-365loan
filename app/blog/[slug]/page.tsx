@@ -11,6 +11,7 @@ import { CtaSection } from "@/components/landing/cta-section";
 import { Breadcrumbs } from "@/components/loans/breadcrumbs";
 import { RelatedClusters } from "@/components/loans/related-clusters";
 import { TableOfContents } from "@/components/blog/table-of-contents";
+import { PostImage } from "@/components/blog/post-image";
 import { buildMetadata, breadcrumbJsonLd, BASE_URL } from "@/lib/seo";
 import { getAllPosts, getPost } from "@/lib/blog";
 import { extractToc } from "@/lib/toc";
@@ -162,7 +163,11 @@ export default async function BlogPost({ params }: { params: Params }) {
           <article className="min-w-0 w-full max-w-[760px] mx-auto lg:mx-0">
           <TableOfContents items={toc} variant="mobile" />
           <div className="blog-prose prose prose-lg max-w-none">
-            <ReactMarkdown remarkPlugins={[remarkGfm]} rehypePlugins={[rehypeRaw, rehypeSlug]}>
+            <ReactMarkdown
+              remarkPlugins={[remarkGfm]}
+              rehypePlugins={[rehypeRaw, rehypeSlug]}
+              components={{ img: PostImage }}
+            >
               {content}
             </ReactMarkdown>
           </div>
