@@ -10,6 +10,32 @@ declare global {
   }
 }
 
+// LeadScout renders its Material UI form inside a same-origin <iframe> (srcDoc),
+// so page-level CSS can't reach it. We inject these overrides INTO the iframe
+// document to recolor MUI's hardcoded indigo primary (#5048e5) to brand green.
+const BRAND = "#2f8f5f";
+const BRAND_HOVER = "#297d53";
+const IFRAME_BRAND_CSS = `
+.MuiButton-containedPrimary { background-color: ${BRAND} !important; }
+.MuiButton-containedPrimary:hover { background-color: ${BRAND_HOVER} !important; }
+.MuiButton-containedPrimary.Mui-focusVisible { box-shadow: 0 0 0 3px rgba(47,143,95,0.4) !important; }
+.MuiButton-outlinedPrimary, .MuiButton-textPrimary { color: ${BRAND} !important; border-color: ${BRAND} !important; }
+.MuiSlider-root { color: ${BRAND} !important; }
+.MuiSlider-track { background-color: ${BRAND} !important; border-color: ${BRAND} !important; }
+.MuiSlider-thumb { background-color: ${BRAND} !important; }
+.MuiSlider-thumb:hover, .MuiSlider-thumb.Mui-focusVisible, .MuiSlider-thumb.Mui-active { box-shadow: 0 0 0 8px rgba(47,143,95,0.16) !important; }
+.MuiSlider-valueLabel { background-color: ${BRAND} !important; }
+.MuiRadio-colorPrimary.Mui-checked, .MuiCheckbox-colorPrimary.Mui-checked, .MuiSwitch-colorPrimary.Mui-checked { color: ${BRAND} !important; }
+.MuiSwitch-colorPrimary.Mui-checked + .MuiSwitch-track { background-color: ${BRAND} !important; }
+.MuiOutlinedInput-root.Mui-focused .MuiOutlinedInput-notchedOutline { border-color: ${BRAND} !important; }
+.MuiInputLabel-root.Mui-focused, .MuiFormLabel-root.Mui-focused { color: ${BRAND} !important; }
+.MuiCircularProgress-colorPrimary, .MuiLinearProgress-colorPrimary { color: ${BRAND} !important; }
+.MuiLinearProgress-bar, .MuiLinearProgress-barColorPrimary { background-color: ${BRAND} !important; }
+.MuiStepIcon-root.Mui-active, .MuiStepIcon-root.Mui-completed { color: ${BRAND} !important; }
+.MuiTypography-colorPrimary, .MuiLink-root { color: ${BRAND} !important; }
+.MuiMenuItem-root.Mui-selected, .MuiMenuItem-root.Mui-selected:hover { background-color: rgba(47,143,95,0.12) !important; }
+`;
+
 export function ApplyForm() {
   const searchParams = useSearchParams();
   const formRef = useRef<HTMLDivElement>(null);
@@ -67,6 +93,42 @@ export function ApplyForm() {
       window.LeadScout.onLoad();
     }
   }, [searchParams, isLoaded]);
+
+  // Inject the brand-color overrides into the LeadScout iframe document.
+  useEffect(() => {
+    const STYLE_ID = "ls-brand-override";
+    const inject = () => {
+      const iframe = (formRef.current?.querySelector("iframe") ||
+        document.getElementById("LoanLibraryIframe")) as HTMLIFrameElement | null;
+      const doc = iframe?.contentDocument;
+      if (!doc) return false;
+      try {
+        if (!doc.getElementById(STYLE_ID)) {
+          const style = doc.createElement("style");
+          style.id = STYLE_ID;
+          style.textContent = IFRAME_BRAND_CSS;
+          (doc.head || doc.documentElement).appendChild(style);
+        }
+        return true;
+      } catch {
+        return false;
+      }
+    };
+
+    let tries = 0;
+    const interval = setInterval(() => {
+      tries += 1;
+      const iframe = (formRef.current?.querySelector("iframe") ||
+        document.getElementById("LoanLibraryIframe")) as HTMLIFrameElement | null;
+      if (iframe && iframe.dataset.lsBrandBound !== "1") {
+        iframe.dataset.lsBrandBound = "1";
+        iframe.addEventListener("load", inject);
+      }
+      if (inject() || tries > 80) clearInterval(interval);
+    }, 250);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <>
