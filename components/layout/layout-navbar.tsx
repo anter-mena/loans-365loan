@@ -22,6 +22,8 @@ import {
   Radio,
   HelpCircle,
   FolderTree,
+  Info,
+  Mail,
 } from "lucide-react";
 import { cn } from "@/lib/utils";
 import {
@@ -39,6 +41,7 @@ const navItems = [
   {
     id: "loans",
     label: "Loans",
+    icon: Banknote,
     sectionHref: "/loans",
     subItems: [
       { title: "By Amount",       desc: "$300 - $5,000 loans",                    href: "/loans/by-amount", icon: Banknote },
@@ -53,6 +56,7 @@ const navItems = [
   {
     id: "resources",
     label: "Resources",
+    icon: BookOpen,
     sectionHref: "/resources",
     subItems: [
       { title: "Tools",         desc: "Calculators & helpful tools",      href: "/resources/tools/loan-calculator", icon: Wrench },
@@ -64,8 +68,8 @@ const navItems = [
       { title: "All Resources", desc: "Browse all tools & guides",        href: "/resources", icon: FolderTree },
     ],
   },
-  { id: "about",   label: "About Us", href: "/aboutus" },
-  { id: "contact", label: "Contact",  href: "/contact" },
+  { id: "about",   label: "About Us", href: "/aboutus", icon: Info },
+  { id: "contact", label: "Contact",  href: "/contact", icon: Mail },
 ];
 
 export function LayoutNavbar() {
@@ -98,14 +102,19 @@ export function LayoutNavbar() {
   return (
     <>
       {/* ── Fixed Navbar ── */}
-      <header className="fixed top-0 inset-x-0 z-50 pt-4 lg:pt-6 pointer-events-none">
+      <header
+        className={cn(
+          "fixed top-0 inset-x-0 z-50 pt-2 md:pt-4 lg:pt-6 max-md:pb-2 pointer-events-none transition-colors duration-300",
+          isScrolled && "max-md:bg-white max-md:dark:bg-[#0a0a0a] max-md:shadow-sm"
+        )}
+      >
         <div className="max-w-[1200px] mx-auto px-4 lg:px-8 h-[40px] lg:h-[60px] grid grid-cols-2 md:grid-cols-3 items-center">
 
           {/* Logo */}
           <div className="flex items-center justify-start pointer-events-auto">
-            <Link href="/" className="flex items-center outline-none">
-              <img src="/logo.svg" alt="365loan" className="h-6 lg:h-8 w-auto dark:hidden" />
-              <img src="/logo2.svg" alt="365loan" className="h-6 lg:h-8 w-auto hidden dark:block" />
+            <Link href="/" className="flex items-center outline-none lg:-translate-y-1.25">
+              <img src="/logo.svg" alt="365loan" className="h-9 lg:h-11 w-auto dark:hidden" />
+              <img src="/logo2.svg" alt="365loan" className="h-9 lg:h-11 w-auto hidden dark:block" />
             </Link>
           </div>
 
@@ -226,21 +235,15 @@ export function LayoutNavbar() {
         </button>
 
         {/* Scrollable content */}
-        <div className="flex flex-col items-center justify-center flex-1 px-8 py-20 overflow-y-auto gap-2">
-
-          {/* Logo */}
-          <Link href="/" onClick={closeMobile} className="mb-8">
-            <img src="/logo.svg" alt="365loan" className="h-10 dark:hidden" />
-            <img src="/logo2.svg" alt="365loan" className="h-10 hidden dark:block" />
-          </Link>
+        <div className="flex flex-col flex-1 px-6 py-20 overflow-y-auto">
 
           {/* Nav items */}
-          <nav className="flex flex-col items-center w-full gap-1">
+          <nav className="flex flex-col w-full gap-0.5 my-auto">
             {navItems.map((item, i) => (
               <div
                 key={item.id}
                 className={cn(
-                  "w-full flex flex-col items-center transition-all duration-300",
+                  "w-full flex flex-col transition-all duration-300",
                   isMobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
                 )}
                 style={{ transitionDelay: isMobileMenuOpen ? `${120 + i * 60}ms` : "0ms" }}
@@ -249,29 +252,31 @@ export function LayoutNavbar() {
                   <>
                     <button
                       onClick={() => setOpenAccordion(openAccordion === item.id ? null : item.id)}
-                      className="flex items-center gap-2 py-3 font-heading font-black text-[2rem] text-foreground hover:text-primary transition-colors"
+                      className="w-full flex items-center gap-3 py-2.5 text-[0.95rem] font-semibold text-foreground hover:text-primary transition-colors"
                     >
+                      <item.icon size={18} className="text-primary shrink-0" />
                       {item.label}
                       <ChevronDown
-                        size={22}
-                        className={cn("mt-1 transition-transform duration-300 text-muted-foreground", openAccordion === item.id && "rotate-180")}
+                        size={16}
+                        className={cn("ml-auto transition-transform duration-300 text-muted-foreground", openAccordion === item.id && "rotate-180")}
                       />
                     </button>
 
                     {/* Sub-items accordion */}
                     <div className={cn(
-                      "grid transition-all duration-300 w-full max-w-[260px]",
-                      openAccordion === item.id ? "grid-rows-[1fr] mb-2" : "grid-rows-[0fr]"
+                      "grid transition-all duration-300 w-full",
+                      openAccordion === item.id ? "grid-rows-[1fr] mb-1" : "grid-rows-[0fr]"
                     )}>
                       <div className="overflow-hidden">
-                        <div className="flex flex-col items-center gap-2 pt-2 pb-3">
+                        <div className="flex flex-col gap-0.5 pt-1 pb-2 pl-8 ml-[9px] border-l border-neutral-200 dark:border-white/10">
                           {item.subItems.map((sub) => (
                             <a
                               key={sub.title}
                               href={sub.href}
                               onClick={closeMobile}
-                              className="text-[0.95rem] text-muted-foreground hover:text-primary transition-colors font-medium py-0.5"
+                              className="flex items-center gap-2.5 text-[0.8rem] text-muted-foreground hover:text-primary transition-colors font-medium py-1.5"
                             >
+                              <sub.icon size={15} className="shrink-0" />
                               {sub.title}
                             </a>
                           ))}
@@ -284,10 +289,11 @@ export function LayoutNavbar() {
                     href={item.href!}
                     onClick={closeMobile}
                     className={cn(
-                      "py-3 font-heading font-black text-[2rem] transition-colors",
+                      "w-full flex items-center gap-3 py-2.5 text-[0.95rem] font-semibold transition-colors",
                       isActive(item.href) ? "text-primary" : "text-foreground hover:text-primary"
                     )}
                   >
+                    <item.icon size={18} className="text-primary shrink-0" />
                     {item.label}
                   </Link>
                 )}
@@ -298,7 +304,7 @@ export function LayoutNavbar() {
           {/* Mobile Apply Now */}
           <div
             className={cn(
-              "mt-8 transition-all duration-300",
+              "flex justify-center transition-all duration-300",
               isMobileMenuOpen ? "opacity-100 translate-y-0" : "opacity-0 translate-y-3"
             )}
             style={{ transitionDelay: isMobileMenuOpen ? `${120 + navItems.length * 60}ms` : "0ms" }}
@@ -306,11 +312,11 @@ export function LayoutNavbar() {
             <a
               href={APPLY_URL}
               onClick={closeMobile}
-              className="bg-foreground text-background font-bold text-[14px] h-12 pl-6 pr-2 rounded-full inline-flex items-center gap-3 transition-all shadow-md hover:-translate-y-[1px]"
+              className="bg-foreground text-background font-bold text-[13px] h-10 pl-5 pr-1.5 rounded-full inline-flex items-center gap-2 transition-all shadow-md hover:-translate-y-px"
             >
               Apply Now
-              <div className="bg-background text-foreground w-8 h-8 rounded-full inline-flex items-center justify-center shadow-sm shrink-0">
-                <ArrowUpRight size={16} />
+              <div className="bg-background text-foreground w-7 h-7 rounded-full inline-flex items-center justify-center shadow-sm shrink-0">
+                <ArrowUpRight size={15} />
               </div>
             </a>
           </div>

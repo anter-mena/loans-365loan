@@ -46,7 +46,7 @@ export function LayoutFooter() {
           {/* Brand */}
           <div className="flex flex-col items-center text-center md:items-start md:text-left gap-4 max-w-65">
             <Link href="/" className="inline-flex">
-              <img src="/logo2.svg" alt="365loan" className="h-8 w-auto" />
+              <img src="/logo2.svg" alt="365loan" className="h-12 w-auto" />
             </Link>
             <p className="text-[0.825rem] text-white/45 leading-relaxed max-w-[220px]">
               Canada's personal loan comparison platform. Find your best rate in minutes.
