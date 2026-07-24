@@ -44,7 +44,7 @@ export const metadata: Metadata = {
   alternates: {
     canonical: "https://365loan.ca",
   },
-  openGraph: {
+  openGraph: { images: [{ url: "/opengraph-image.png", width: 1200, height: 630 }],
     type: "website",
     locale: "en_CA",
     url: "https://365loan.ca",
