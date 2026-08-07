@@ -68,7 +68,7 @@ export function ApplyForm() {
         },
       },
       defaultValues: {
-        requestedAmount: Number(amount) || 700,
+        requestedAmount: Number(amount) || 1200,
         firstName: firstname || "",
         email: email || "",
       },
