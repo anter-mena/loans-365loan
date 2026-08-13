@@ -5,7 +5,7 @@ import "./globals.css";
 import { LayoutNavbar } from "@/components/layout/layout-navbar";
 import { LayoutFooter } from "@/components/layout/layout-footer";
 import { FloatingMessageButton } from "@/components/layout/floating-message-button";
-import { CookieConsent } from "@/components/layout/cookie-consent";
+import { CookieBanner } from "@/components/layout/CookieBanner";
 
 const fontSans = Inter({
   variable: "--font-sans",
@@ -129,7 +129,7 @@ export default function RootLayout({
         <LayoutFooter />
 
         <FloatingMessageButton />
-        <CookieConsent />
+        <CookieBanner />
       </body>
     </html>
   );

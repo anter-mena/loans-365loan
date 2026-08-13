@@ -5,7 +5,7 @@ import { Cookie } from "lucide-react";
 
 const STORAGE_KEY = "365loan-cookie-consent";
 
-export function CookieConsent() {
+export function CookieBanner() {
   const [visible, setVisible] = useState(false);
 
   useEffect(() => {
