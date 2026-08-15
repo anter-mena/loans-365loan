@@ -141,6 +141,21 @@ export function ContactForm() {
       </div>
 
       <div className="flex flex-col gap-1.5">
+        <Label htmlFor="phone" className={STYLES.label}>
+          Phone <span className="font-normal text-muted-foreground">(optional)</span>
+        </Label>
+        <Input
+          id="phone"
+          name="phone"
+          type="tel"
+          autoComplete="tel"
+          placeholder="(555) 000-0000"
+          disabled={submitting}
+          className={STYLES.field}
+        />
+      </div>
+
+      <div className="flex flex-col gap-1.5">
         <Label htmlFor="subject" className={STYLES.label}>
           What&apos;s it about?
         </Label>
