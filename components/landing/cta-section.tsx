@@ -13,11 +13,40 @@ const PERKS = [
 export function CtaSection() {
   const [email, setEmail] = useState("");
   const [subscribed, setSubscribed] = useState(false);
+  const [busy, setBusy] = useState(false);
+  const [error, setError] = useState("");
 
-  function handleSubscribe(e: React.FormEvent<HTMLFormElement>) {
+  async function handleSubscribe(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (!email) return;
-    setSubscribed(true);
+    if (!email || busy) return;
+
+    setBusy(true);
+    setError("");
+
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          topic: "Newsletter signup",
+          name: email,
+          email,
+          message: "Requested the newsletter from the site-wide CTA section.",
+        }),
+      });
+
+      if (!res.ok) {
+        const data = await res.json().catch(() => null);
+        setError(data?.error ?? "Something went wrong. Please try again.");
+        return;
+      }
+
+      setSubscribed(true);
+    } catch {
+      setError("Couldn't reach the server. Please try again.");
+    } finally {
+      setBusy(false);
+    }
   }
 
   return (
@@ -94,22 +123,31 @@ export function CtaSection() {
               You're subscribed! Watch your inbox for the next update.
             </p>
           ) : (
-            <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
-              <input
-                type="email"
-                required
-                value={email}
-                onChange={(e) => setEmail(e.target.value)}
-                placeholder="you@example.com"
-                className="w-full sm:flex-1 h-12 rounded-full bg-white/10 border border-white/15 px-5 text-[14px] text-white placeholder:text-white/35 focus:outline-none focus:border-primary/60 transition-colors"
-              />
-              <button
-                type="submit"
-                className="bg-primary hover:opacity-90 text-white font-bold text-[14px] h-12 px-6 rounded-full inline-flex items-center justify-center transition-all shadow-md hover:shadow-lg shrink-0"
-              >
-                Subscribe
-              </button>
-            </form>
+            <>
+              <form onSubmit={handleSubscribe} className="flex flex-col sm:flex-row gap-3">
+                <input
+                  type="email"
+                  required
+                  value={email}
+                  onChange={(e) => setEmail(e.target.value)}
+                  disabled={busy}
+                  placeholder="you@example.com"
+                  className="w-full sm:flex-1 h-12 rounded-full bg-white/10 border border-white/15 px-5 text-[14px] text-white placeholder:text-white/35 focus:outline-none focus:border-primary/60 transition-colors disabled:opacity-60"
+                />
+                <button
+                  type="submit"
+                  disabled={busy}
+                  className="bg-primary hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed text-white font-bold text-[14px] h-12 px-6 rounded-full inline-flex items-center justify-center transition-all shadow-md hover:shadow-lg shrink-0"
+                >
+                  {busy ? "Subscribing..." : "Subscribe"}
+                </button>
+              </form>
+              {error && (
+                <p role="alert" className="text-[0.8rem] text-red-300 mt-3">
+                  {error}
+                </p>
+              )}
+            </>
           )}
         </div>
 
