@@ -1,10 +1,10 @@
-﻿"use client";
+"use client";
 
 /* Contact form.
 
    Structure, field set and submission logic are UNIFIED across the network:
    same fields, same lib/contact.ts helper, same states. Only the STYLES block
-   below is site-specific â€” this site keeps its own look on purpose, so the
+   below is site-specific — this site keeps its own look on purpose, so the
    sites don't share a visual fingerprint.
 
    Site-specific email config lives in app/api/contact/route.ts.            */
@@ -27,7 +27,7 @@ const TOPICS = [
   "Something else",
 ];
 
-/* â”€â”€ Site styling â€” the only part that differs between sites â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ── Site styling — the only part that differs between sites ───────────── */
 const STYLES = {
   card: "bg-card border border-border rounded-2xl p-8 lg:p-10 flex flex-col gap-5",
   panel:
@@ -38,7 +38,7 @@ const STYLES = {
   button:
     "self-end bg-foreground hover:opacity-90 disabled:opacity-60 disabled:cursor-not-allowed text-background font-bold text-[14px] h-12 pl-6 pr-2 rounded-full inline-flex items-center gap-3 transition-all shadow-md hover:shadow-lg hover:-translate-y-px disabled:hover:translate-y-0",
 };
-/* â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€ */
+/* ─────────────────────────────────────────────────────────────────────── */
 
 export function ContactForm() {
   const [status, setStatus] = useState<ContactStatus>("idle");
@@ -73,7 +73,7 @@ export function ContactForm() {
           Message sent
         </h2>
         <p className="text-[0.875rem] text-muted-foreground max-w-[320px] leading-relaxed">
-          Thanks for reaching out â€” we&apos;ll get back to you within one business day.
+          Thanks for reaching out — we&apos;ll get back to you within one business day.
         </p>
         <button
           type="button"
@@ -179,7 +179,7 @@ export function ContactForm() {
         />
       </div>
 
-      {/* Honeypot â€” hidden from people, frequently auto-filled by bots. */}
+      {/* Honeypot — hidden from people, frequently auto-filled by bots. */}
       <input
         type="text"
         name="company"

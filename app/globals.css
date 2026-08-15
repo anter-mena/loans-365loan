@@ -1,4 +1,4 @@
-﻿@import "tailwindcss";
+@import "tailwindcss";
 @import "tw-animate-css";
 @import "shadcn/tailwind.css";
 @plugin "@tailwindcss/typography";
@@ -168,7 +168,7 @@
   --color-ink: #161d35;
 }
 
-/* Blog article body â€” maps @tailwindcss/typography onto the 365loan design tokens
+/* Blog article body — maps @tailwindcss/typography onto the 365loan design tokens
    so it adapts to light/dark automatically (our tokens already flip under .dark). */
 .blog-prose {
   --tw-prose-body: var(--foreground);
@@ -241,7 +241,7 @@ html { scroll-behavior: smooth; }
   .dark .bg-dot-grid {
     background-image: radial-gradient(circle, oklch(1 0 0 / 0.04) 1px, transparent 1px);
   }
-}/* Blog/News tables â€” bordered, padded, zebra (desktop) + horizontal scroll (mobile) */
+}/* Blog/News tables — bordered, padded, zebra (desktop) + horizontal scroll (mobile) */
 .blog-prose table {
   width: 100%;
   border-collapse: collapse;
